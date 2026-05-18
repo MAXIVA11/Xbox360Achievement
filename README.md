@@ -1,4 +1,4 @@
-# Xbox 360 Achievement notification🎮
+# Xbox 360 Achievement Notification🎮
 
 A lightweight recreation of the legendary **Xbox 360 achievement notification system**, built with Python + PyQt5.
 
