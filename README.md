@@ -66,7 +66,10 @@ python Xbox360AchievementPopUp.py
 
 This project is a fan-made recreation of Xbox 360 UI elements for educational and nostalgic purposes only.  
 It is not affiliated with Microsoft or Xbox.
+
 ---
+
+
 ## Bonus🎉
 Also works on Linux!
 
