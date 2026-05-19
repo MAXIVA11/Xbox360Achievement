@@ -1,7 +1,7 @@
 import sys
 import os
 import argparse
-
+from PyQt5.QtMultimedia import QSoundEffect
 from PyQt5.QtCore import (
     Qt,
     QPropertyAnimation,
@@ -29,9 +29,6 @@ from PyQt5.QtWidgets import (
     QLabel,
 )
 
-from PyQt5.QtMultimedia import QSoundEffect
-
-
 FONT_FAMILY = "Convection Regular"
 
 
@@ -46,6 +43,8 @@ class AchievementPopup(QWidget):
     ):
         super().__init__()
 
+        self.anim = QPropertyAnimation(self, b"pos")
+        self.slide_anim = QPropertyAnimation(self, b"pos")
         self.title = title
         self.gamerscore = gamerscore
         self.side = side
@@ -170,7 +169,8 @@ class AchievementPopup(QWidget):
 
         return self._build_xbox_icon(size)
 
-    def _make_round_pixmap(self, pixmap, size):
+    @staticmethod
+    def _make_round_pixmap(pixmap, size):
 
         canvas = QPixmap(size, size)
         canvas.fill(Qt.transparent)
@@ -207,7 +207,8 @@ class AchievementPopup(QWidget):
 
         return canvas
 
-    def _build_xbox_icon(self, size):
+    @staticmethod
+    def _build_xbox_icon(size):
 
         pm = QPixmap(size, size)
         pm.fill(Qt.transparent)
@@ -288,7 +289,6 @@ class AchievementPopup(QWidget):
             self.sound.play()
 
         # ================= SLIDE IN =================
-        self.slide_anim = QPropertyAnimation(self, b"pos")
 
         self.slide_anim.setDuration(170)
 
@@ -311,8 +311,6 @@ class AchievementPopup(QWidget):
             end_x = screen.right() + self.width() + 30
         else:
             end_x = -self.width() - 30
-
-        self.anim = QPropertyAnimation(self, b"pos")
 
         self.anim.setDuration(150)
 
